@@ -70,33 +70,35 @@ def game():
     print(wordle)
     #letters as a variable for letters you have used that are in the word
     letters = []
-    alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     user_input = input("Try and guess the 5 letter word: ").lower()
     place_holder = ["_", "_", "_", "_", "_"]
     
     if user_input == wordle:
         print(f"Congrats you got it on your first try, today's wordle is '{wordle}'")
     else:
-        for char in user_input:
-            if char in wordle:
-                letters.append(char)
+        for i in range(5):
+            if user_input[i] == wordle[i]:
+                place_holder[i] = user_input[i]
             else:
-                alphabet.remove(char)
+                for char in user_input:
+                    if char in wordle:
+                        letters.append(char)
+    
+        print(place_holder)
+        print(set(letters))
+                
         #check for which letters where right
         for attempt in range(4):
-            print(letters)
-            print(f"letters remaining: {alphabet}")
             new_attempt = input(f"The last guess was incorrect, please try again {attempt+2}/5: ").lower()
             if new_attempt == wordle:
                 print(f"Congrats on winning today's wordle! Your guess was correct today's word is '{wordle}'")
                 break
             else:
-                for char in new_attempt:
-                    if char in wordle:
-                        letters.append(char)
-                        alphabet.remove(char)
-                    else:
-                        alphabet.remove(char)
+                for i in range(5):
+                    if new_attempt[i] == wordle[i]:
+                        place_holder[i] = new_attempt[i]
+            print(place_holder)
+            print(set(letters))
             
                 
 
