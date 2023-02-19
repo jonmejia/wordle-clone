@@ -81,7 +81,7 @@ def game():
                 place_holder[i] = user_input[i]
             else:
                 for char in user_input:
-                    if char in wordle:
+                    if char in wordle and char not in place_holder:
                         letters.append(char)
     
         print(place_holder)
