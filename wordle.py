@@ -67,12 +67,11 @@ words = ("About", "Alert", "Argue", "Beach", "Above", "Alike", "Arise", "Began",
 
 def game():
     wordle = random.choice(words).lower()
-    print(wordle)
+    
     #letters as a variable for letters you have used that are in the word
     letters = []
     user_input = input("Try and guess the 5 letter word: ").lower()
     place_holder = ["_", "_", "_", "_", "_"]
-    
     if user_input == wordle:
         print(f"Congrats you got it on your first try, today's wordle is '{wordle}'")
     else:
@@ -99,7 +98,7 @@ def game():
                         place_holder[i] = new_attempt[i]
             print(place_holder)
             print(set(letters))
+    if new_attempt != wordle:
+        print(f"Today's wordle was '{wordle}'. Try again tomorrow :)")
             
-                
-
 game()
